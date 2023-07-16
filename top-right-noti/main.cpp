@@ -24,9 +24,8 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLine, int i
 
         NotifyRect.right = NotifyRect.right - NotifyRect.left;
         NotifyRect.bottom = NotifyRect.bottom - NotifyRect.top;
-
-        //50PX Y offset to make the spacing even
-        SetWindowPos(hwnd, 0, GetSystemMetrics(SM_CXSCREEN) - NotifyRect.right, -50, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_SHOWWINDOW);
+        
+        SetWindowPos(hwnd, 0, GetSystemMetrics(SM_CXSCREEN) - NotifyRect.right, 0, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_SHOWWINDOW);
 
         Sleep(10);
     }
