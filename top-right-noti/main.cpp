@@ -9,10 +9,17 @@ using namespace std;
 #define SWP_NOZORDER 0X4
 #define SWP_SHOWWINDOW 0x0040
 
-int cooldown;
+int pos;
 
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLine, int iCmdShow)
 {
+    // get position form command line, if no command line, use default
+    if (szCmdLine != NULL) {
+        pos = atoi(szCmdLine);
+	}
+    else {
+        pos = 100;
+	}
 
     while (true) {
         //Windows System Notifications
@@ -25,7 +32,7 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLine, int i
         NotifyRect.right = NotifyRect.right - NotifyRect.left;
         NotifyRect.bottom = NotifyRect.bottom - NotifyRect.top;
         
-        SetWindowPos(hwnd, 0, GetSystemMetrics(SM_CXSCREEN) - NotifyRect.right, 0, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_SHOWWINDOW);
+        SetWindowPos(hwnd, 0, GetSystemMetrics(SM_CXSCREEN) - NotifyRect.right, pos, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_SHOWWINDOW);
 
         Sleep(10);
     }
